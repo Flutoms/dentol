@@ -1,0 +1,88 @@
+name: dental_health
+description: A new Flutter project.
+
+
+publish_to: 'none'
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  
+  cupertino_icons: ^1.0.2
+
+
+  # For Google maps
+  google_maps_flutter: ^2.2.1
+  flutter_polyline_points: ^1.0.0
+  geolocator: ^9.0.2
+  geocoding: ^2.0.5
+
+  # Google fonts
+  google_fonts: ^4.0.4
+
+  # For permission
+  permission_handler: ^10.4.3
+
+  # For Lottie animation
+  lottie: ^1.4.2
+
+  # Enable firebase services
+#  firebase_core: ^1.16.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  
+  
+  
+  
+  
+  flutter_lints: ^2.0.0
+
+
+
+
+
+flutter:
+  
+  uses-material-design: true
+  
+  assets:
+    - assets/images/
+
+
+  
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
