@@ -1,8 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geocoding/geocoding.dart';
-
 import 'nearby_places.dart';
 
 class MapScreen extends StatefulWidget {
@@ -15,7 +13,11 @@ class MapScreen extends StatefulWidget {
 
 class _MapScreenState extends State<MapScreen> {
   late GoogleMapController _mapController;
-  final LatLng _initialCameraPosition = const LatLng(6.447946688582, 7.500136151162479);
+  final LatLng _initialCameraPosition =
+  const LatLng(6.447946688582, 7.500136151162479);
+
+  String locationName = "Your Location Name";
+  String purpose = "Your Purpose for the Location";
 
   @override
   void dispose() {
@@ -23,9 +25,14 @@ class _MapScreenState extends State<MapScreen> {
     super.dispose();
   }
 
+  @override
+  void initState() {
+    super.initState();
+    _updateCameraPosition();
+  }
+
   void onMapCreated(GoogleMapController controller) {
     _mapController = controller;
-    _updateCameraPosition();
   }
 
   void _updateCameraPosition() async {
@@ -36,17 +43,14 @@ class _MapScreenState extends State<MapScreen> {
         firstLocation.latitude,
         firstLocation.longitude,
       );
+
+      setState(() {
+        locationName = "Unknown Location";
+        purpose = "Your Purpose for the Location"; // Set the actual purpose
+      });
+
       _mapController.animateCamera(CameraUpdate.newLatLng(locationCoordinates));
     }
-  }
-
-  void _navigateToNearbyScreen() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => NearByClinicsScreen(),
-      ),
-    );
   }
 
   @override
@@ -62,9 +66,26 @@ class _MapScreenState extends State<MapScreen> {
           target: _initialCameraPosition,
           zoom: 14.0,
         ),
+        markers: Set<Marker>.of([
+          Marker(
+            markerId: MarkerId("locationMarker"),
+            position: _initialCameraPosition,
+            infoWindow: InfoWindow(
+              title: locationName,
+              snippet: purpose,
+            ),
+          ),
+        ]),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _navigateToNearbyScreen,
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => NearByClinicsScreen(),
+            ),
+          );
+        },
         child: Icon(Icons.arrow_forward),
       ),
     );

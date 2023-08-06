@@ -56,8 +56,7 @@ class _LocationPermissionScreenState extends State<LocationPermissionScreen> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Lottie.asset(
-                  '/Users/joshuanwokoye/AndroidStudioProjects/'
-                  'dental_health/assets/images/map.json',
+                  'assets/images/map.json',
                   height: 90,
                   fit: BoxFit.contain,
                   key: const ValueKey(0)),
@@ -69,8 +68,7 @@ class _LocationPermissionScreenState extends State<LocationPermissionScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
                     'Enabling your Location services '
-                    'ensures you see vendors around you at all times or '
-                    'you can choose from our operational cities.',
+                    'ensures you see clinics around you at all times ',
                     softWrap: true,
                     textAlign: TextAlign.center,
                     style: regularText()),
