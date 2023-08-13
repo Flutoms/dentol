@@ -19,7 +19,6 @@ dependencies:
   
   cupertino_icons: ^1.0.2
 
-
   # For Google maps
   google_maps_flutter: ^2.2.1
   flutter_polyline_points: ^1.0.0
@@ -28,9 +27,6 @@ dependencies:
 
   # Google fonts
   google_fonts: ^4.0.4
-
-  # For permission
-  permission_handler: ^10.4.3
 
   # For Lottie animation
   lottie: ^1.4.2

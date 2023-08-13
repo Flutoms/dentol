@@ -3,8 +3,8 @@ import 'package:dental_health/ui/map_screen/map_screen.dart';
 import 'package:dental_health/ui/util/colors.dart';
 import 'package:dental_health/ui/util/text_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:lottie/lottie.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 class LocationPermissionScreen extends StatefulWidget {
   const LocationPermissionScreen({Key? key}) : super(key: key);
@@ -15,19 +15,22 @@ class LocationPermissionScreen extends StatefulWidget {
 }
 
 class _LocationPermissionScreenState extends State<LocationPermissionScreen> {
-
   Future<void> _requestLocationPermission() async {
-    final PermissionStatus status = await Permission.location.request();
+    LocationPermission permission = await Geolocator.checkPermission();
 
-    if (status.isGranted) {
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        _showLocationPermissionDeniedDialog();
+        return Future.error('Location permissions are denied');
+      }
+    } else {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
           builder: (context) => const MapScreen(location: ''),
         ),
       );
-    } else if (status.isDenied || status.isPermanentlyDenied) {
-      _showLocationPermissionDeniedDialog();
     }
   }
 
@@ -36,11 +39,13 @@ class _LocationPermissionScreenState extends State<LocationPermissionScreen> {
       context: context,
       builder: (context) => ConfirmDialog(
         titleText: 'Location Permission Denied',
-        warningText:
-            'Please enable location permission in device '
-                'settings inorder to use this feature.',
+        warningText: 'Please enable location permission in device '
+            'settings inorder to use this feature.',
         okText: 'Open Settings',
-        onTap: () => openAppSettings(),
+        onTap: () async {
+          await Geolocator.openAppSettings();
+          await Geolocator.openLocationSettings();
+        },
       ),
     );
   }
@@ -55,11 +60,8 @@ class _LocationPermissionScreenState extends State<LocationPermissionScreen> {
           Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Lottie.asset(
-                  'assets/images/map.json',
-                  height: 90,
-                  fit: BoxFit.contain,
-                  key: const ValueKey(0)),
+              Lottie.asset('assets/images/map.json',
+                  height: 90, fit: BoxFit.contain, key: const ValueKey(0)),
               const SizedBox(height: 40),
               Text('Dental wants to access your Location',
                   style: boldText(fontSize: 16)),
