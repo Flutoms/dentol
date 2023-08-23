@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "541149552427",
+    "project_id": "find-a-dental-clinic",
+    "storage_bucket": "find-a-dental-clinic.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:541149552427:android:0d9311ba02638a9965ef6e",
+        "android_client_info": {
+          "package_name": "com.example.dental_health"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "541149552427-88b9f3399nt1o1mhk7e7ka705c2rfagn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0ODX40Jlg4oQaK6hzpXOUTuNIZ036TW0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "541149552427-88b9f3399nt1o1mhk7e7ka705c2rfagn.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "541149552427-hdea3t3ag2ann37b1sn3af91p5j772co.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.findADentalClinic.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:541149552427:android:f174cb5a2ecc2da065ef6e",
+        "android_client_info": {
+          "package_name": "com.example.find_a_dental_clinic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "541149552427-88b9f3399nt1o1mhk7e7ka705c2rfagn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0ODX40Jlg4oQaK6hzpXOUTuNIZ036TW0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "541149552427-88b9f3399nt1o1mhk7e7ka705c2rfagn.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "541149552427-hdea3t3ag2ann37b1sn3af91p5j772co.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.findADentalClinic.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

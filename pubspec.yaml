@@ -32,7 +32,8 @@ dependencies:
   lottie: ^1.4.2
 
   # Enable firebase services
-#  firebase_core: ^1.16.0
+  firebase_core: ^2.15.1
+
 
 dev_dependencies:
   flutter_test:
