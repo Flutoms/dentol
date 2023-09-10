@@ -1,9 +1,9 @@
 import UIKit
 import Flutter
 import GoogleMaps
-// import Firebase
-// import FirebaseCore
-// import FirebaseMessaging
+ import Firebase
+import FirebaseCore
+//import FirebaseMessaging
 
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate {

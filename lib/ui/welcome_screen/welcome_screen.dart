@@ -1,5 +1,7 @@
+import 'package:dental_health/ui/map_screen/map_screen.dart';
 import 'package:dental_health/ui/permission_screen/location_permission_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 
 import '../util/text_styles.dart';
 
@@ -37,12 +39,23 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 50),
                   InkWell(
-                    onTap: () {
-                      Navigator.push(
+                    onTap: () async {
+                      LocationPermission permission = await Geolocator.checkPermission();
+                      if (permission == LocationPermission.whileInUse ||
+                          permission == LocationPermission.always) {
+                        Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  const LocationPermissionScreen()));
+                            builder: (context) => const MapScreen(location: ''),
+                          ),
+                        );
+                      } else {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const LocationPermissionScreen()));
+                      }
                     },
                     child: Container(
                       width: double.infinity,
